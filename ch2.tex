@@ -1,3 +1,4 @@
+%! TEX root = /home/simon/Documents/komplexanalysrövningsledning/lösningsförslag/main.tex
 
 \section{2.15}%
 \label{sec:2_15}
@@ -71,3 +72,56 @@ $v(x, y) = x^2 - y^2.$
 \paragraph{Lösning:}
 $v = 2 x y$ ger $u + i v = z^2$.
 
+
+\section{Linjär algebra och holomorfi}%
+\label{sec:flervarre_tolkning_av_holomorfitet}
+
+Om vi antar proposition 2.11 (bevaring av vinklar) som definitionen av holomorf kan vi härleda Cauchy--Riemanns ekvationer genom lite linjäralgebra.
+
+En hyfsat rigorös definition av \emph{derivata} är följande.
+\begin{definition}\label{def:derivata}
+	Låt $E \subset \reals^n$ vara en öppen delmängd, och låt $f \from E \to \reals^m$ vara en funktion.
+	$f$ är \emph{deriverbar} i en punkt $x \in E$ om det finns en linjär funktion $A \from \reals^n \to \reals^m$ s.a.\
+	\begin{align}
+		f(x + h) = f(x) + A h + \rho(h),
+	\end{align}
+	där $\frac{\rho(h)}{\abs{h}} \overset{h \to {\it 0}}{\longrightarrow} 0$.
+\end{definition}
+
+Om $E \subset \complexes$ så kan en funktion $f \from E \to \complexes$ även betraktas som en funktion $f \from \tilde E \to \reals^2$ där $\tilde E \subset \reals^2$ svarar mot $E$.
+Från flervarren vet vi att om en funktion är partiellt deriverbar i ett öppet område är den deriverbar.
+Så betrakta en sådan funktion $f$ och låt, utan inskränkning, $x = 0$.
+Vi har då att
+\begin{align}
+	f(h) \approx f(0) + A h
+\end{align}
+för små $h$.
+Vi har att $A$ är en $2 \times 2$-matris,
+\begin{align}
+	A =
+	\begin{bmatrix}
+		a_{11} & a_{12}\\
+		a_{21} & a_{22}
+	\end{bmatrix}.
+\end{align}
+Så $f$ är, nära $h$, en affin funktion som bestäms entydigt av var $0$ och basvektorerna avbildas.
+Om $f$ ska vara holomorf måste vinkeln mellan bilden av basvektorerna vara $\frac{\pi}{2}$.
+Dessa två villkor är ekvivalenta.
+
+Därför måste $A$ vara proportionell mot en ortogonal matris.
+Vi har att $A A^\mathrm{T} = \lambda I$ för något $\lambda \in \reals$.
+Villkoren som matriselementen måste uppfylla är då
+\begin{align}
+	a_{12} ={}& -a_{21} \quad \text{och} \quad a_{11} = a_{22} \quad \text{eller}%
+	\label{eq:CR_holo}\\
+	%
+	a_{12} ={}& a_{21} \quad \text{och} \quad a_{11} = -a_{22}.
+	\label{eq:CR_antiholo}
+\end{align}
+Om vi nu identifierar $A$ med $f$:s Jacobianmatris
+$\begin{bmatrix}
+	\partial_x f_1 & \partial_y f_1\\
+	\partial_x f_2 & \partial_y f_2
+\end{bmatrix}$
+ser vi att vi får tillbaka Cauchy--Riemanns ekvationer.
+\cref{eq:CR_holo} beskriver villkoren för en holomorf funktion, medan \cref{eq:CR_antiholo} beskriver villkoren för en antiholomorf funktion.
