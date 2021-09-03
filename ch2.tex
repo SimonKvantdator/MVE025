@@ -1,0 +1,73 @@
+
+\section{2.15}%
+\label{sec:2_15}
+Derivera $T(z) = \frac{a z + b}{c z + d}$ där $a$, $b$, $c$, och $d \in \complexes$ s.a.\ $a d - b c \neq 0$.
+När är T'(z) = 0?
+
+\paragraph{Lösning:}
+\begin{align}
+	T'(z) = \frac{a d - b c}{(c z + d)^2}.
+\end{align}
+Derivatan är därför aldrig $0$.
+
+
+\section{2.21}%
+\label{sec:2_21}
+Bevisa att om $f(z)$ och $\conjugate{f(z)}$ båda är holomorfa på ett sammanhängande område $G \subset \complexes$, så är $f$ konstant på $G$.
+
+\paragraph{Lösning:}
+Från Cauchy--Riemann-ekvationen har vi att
+\begin{align}
+	\partialderivative{f}{x} = -i \partialderivative{f}{y},%
+	\label{eq:CR_with_f}\\
+	%
+	\partialderivative{\conjugate f}{x} = -i \partialderivative{\conjugate f}{y},%
+	\label{eq:CR_with_conjugate_f}
+\end{align}
+men om man komplexkonjugerar \cref{eq:CR_with_f} får man också att
+\begin{align}
+	\partialderivative{\conjugate f}{x} = i \partialderivative{\conjugate f}{y}.%
+	\label{eq:conjugated_CR_with_f}
+\end{align}
+\cref{eq:CR_with_conjugate_f,eq:conjugated_CR_with_f} ger tillsammans att $f' = 0$ på $G$.
+
+Vi kan då applicera Teorem 2.17 för att lösa uppgiften.
+
+
+\section{2.22}%
+\label{sec:2_22}
+Antag att $f$ är hel och på formen $f(z) = u(x) + i v(y)$.
+Visa att $f(z) = a z + b$ för något $a \in \reals$ och något $b \in \complexes$.
+
+\paragraph{Lösning:}
+Teorem 2.13 ger oss $f'(z) = u'(x)$, som är en reell funktion.
+Vi kan då se att $f''(z)$ är väldefinerad och, eftersom $f''(z) = -i \partial_y f'(z)$, är $f''(z)$ $0$ överallt.
+Enligt teorem 2.17 är då $f' = a$ för något konstant $a$ (som vi även vet är reell).
+Eftersom $a z - f(z)$ har derivata $0$ kan vi applicera teorem 2.17 en gång till för att säga att $f(z) = a z + b$ för något $b \in \complexes$.
+
+
+\section{2.23}%
+\label{sec:2_23}
+Antag att $f$ är hel med real- och imaginärdel $u$ och $v$ som uppfyller $u(x, y) v(x, y) = 3$ för alla på hela $\complexes$.
+Visa att $f$ är konstant.
+
+\paragraph{Lösning:}
+\begin{align*}
+	f(z)^2 ={}& \left(u(x, y) + i v(x, y)\right)^2\\
+	={}& u(x, y)^2 + 2 i u(x, y) v(x, y) - v(x, y)^2\\
+	={}& u(x, y)^2 + 6 i - v(x, y)^2.
+\end{align*}
+Alltså är $f(z)^2 - 6 i$ en reell hel funktion.
+Som i uppgift 2.22 har vi då att $f(z)^2 - 6 i$ är en konstant funktion.
+
+
+\section{2.25}%
+\label{sec:2_25}
+Hitta något $v$ s.a.\ $u + i v$ är holomorf i något område för följande $v$:
+
+\subsection{a.}
+$v(x, y) = x^2 - y^2.$
+
+\paragraph{Lösning:}
+$v = 2 x y$ ger $u + i v = z^2$.
+
