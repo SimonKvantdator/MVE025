@@ -1,8 +1,161 @@
-\section{3.19}%
-\label{sec:3_19}
+\section{3.13}%
+\label{sec:3_13}
 
+Låt $f(z) = \frac{2 z}{z + 2}$. Rita två grafer, en som visar följande sex delmängder $G \subset \complexes$, och en som visar deras bild under $f$.
 
-% \subsection{a.}
+\subsection{a.}
+$G_a = \reals \cup \set{\infty}$.
 
 \paragraph{Lösning:}
+Denna linje kommer avbildas på antingen en linje eller en cirkel.
+Men det är uppenbart att $f \mid_\reals \from \reals \to \reals$, så $G_a$ avbildas på sig själv.
 
+\subsection{b.}
+$G_b = i \reals \cup \set{\infty}$.
+
+\paragraph{Lösning:}
+\begin{subequations}
+\begin{align}
+	0 &\mapsto 0,%
+	\label{eq:image_of_0}\\
+	%
+	\infty &\mapsto 2,%
+	\label{eq:image_of_infty}
+\end{align}
+så $f(G_b)$ är en cirkel som går genom punkterna $0$ och $2$.
+Men på grund av symmetri måste $f(G_b)$ vara symmetrisk i realaxeln, så $f(G_b)$ är cirkeln med centrum i $1$ med radie $1$.
+
+\subsection{c.}
+$G_c = \set{z \suchthat x = y} \cup \set{\infty}$.
+
+\paragraph{Lösning:}
+\begin{align}
+	f \from 1 + i &\mapsto \frac{4 + 2 i}{5}.%
+	\label{eq:image_of_1+i}
+\end{align}
+Så $f(G_c)$ är en cirkel som går genom $0$, $2$, och $\frac{4 + 2 i}{5}$.
+
+\subsection{d.}
+$G_d = C[0, 2]$.
+
+\paragraph{Lösning:}
+\begin{align}
+	f \from 2 &\mapsto 1,
+	\label{eq:image_of_2}\\
+	%
+	f \from -2 &\mapsto \infty.%
+	\label{eq:image_of_-2}
+\end{align}
+\end{subequations}
+$G_d$ träffar därför $G_a$ i punkten $1$ med vinkeln $\frac{\pi}{2}$.
+Eftersom $\infty \in f(G_d)$ är hon en linje.
+$G_d$ är alltså linjen $x = 1$.
+
+\subsection{e.}
+$G_e = C[1, 1]$.
+
+\paragraph{Lösning:}
+\Cref{eq:image_of_0,eq:image_of_2} samt symmetri i realaxeln $\implies$ $f(G_e) = C[\frac{1}{2}, \frac{1}{2}]$.
+
+\subsection{f.}
+$G_f = C[-1, 1]$.
+
+\paragraph{Lösning:}
+\Cref{eq:image_of_-2} $\implies$ $f(G_f)$ är en linje.
+\Cref{eq:image_of_0} $\implies$ $f(G_f)$ korsar realaxeln i $0$(med vinkeln $\frac{\pi}{2}$).
+Så $f(G_f) = \set{x = 0}$.
+
+
+\section{3.14}%
+\label{sec:3_14}
+Hitta Möbiustransformationer som uppfyller följande.
+
+\subsection{a.}
+\begin{align*}
+	1 &\mapsto 0,\\
+	2 &\mapsto 1,\\
+	3 &\mapsto \infty.
+\end{align*}
+
+\paragraph{Lösning:}
+\begin{align*}
+	\frac{z - 1}{z - 3} \cdot \frac{2 - 3}{2 - 1}.
+\end{align*}
+
+\subsection{b.}
+\begin{align*}
+	1 &\mapsto 0,\\
+	1 + i &\mapsto 1,\\
+	2 &\mapsto \infty.
+\end{align*}
+
+\paragraph{Lösning:}
+\begin{align*}
+	\frac{z - 1}{z - 2} \cdot \frac{(1 + i) - 2}{(1 + i) - 1}.
+\end{align*}
+
+\subsection{c.}
+\begin{align*}
+	0 &\mapsto i,\\
+	1 &\mapsto 1,\\
+	\infty &\mapsto -i.
+\end{align*}
+
+\paragraph{Lösning:}
+\begin{align*}
+	-i \frac{z - i}{z + i}.
+\end{align*}
+
+
+\section{3.18}%
+\label{sec:3_18}
+Hitta en Möbiustransformation som avbildar $D[0, 1]$ på $G \definedas \set{x + i y \in \complexes \suchthat x + y > 0}$.
+
+\paragraph{Lösning:}
+Om vi kan hitta en Möbiustransformation som avbildar $\partial D[0, 1]$ på $\partial G$ så finns det två alternativ:
+\begin{enumerate}
+	\item insidan av $D[0, 1]$ avbildas på insidan av $G$,
+	\item insidan av $D[0, 1]^\complement$ avbildas på insidan av $G$.
+\end{enumerate}
+Det räcker att kolla på bilden av en punkt för att avgöra vilken av dessa som gäller.
+
+Möbiustransformation
+\begin{align}
+	f(z) = (1 - i) \frac{z + i}{z + 1} 
+\end{align}
+avbildar
+\begin{align*}
+	-i &\mapsto 0,\\
+	-1 &\mapsto \infty,\\
+	\infty &\mapsto 1 - i.
+\end{align*}
+Så $f(\partial D[0, 1])$ är en linje som går jenom $0$ och $1 + i$, alltså $\partial G$.
+Det som återstår att kolla är att $f(D[0, 1])$ hamnar på \enquote{rätt sida om randen}.
+Men det kan vi övertyga oss om genom att betrakta $f \from 0 \mapsto 1 + i \in G$.
+
+Om det sista steget hade skitit sig hade man bara behövt definera om $f$ med motsatt tecken.
+
+
+\section{3.19}%
+\label{sec:3_19}
+Jacobianen av en avbildning $(u, v) \from \reals^2 \to \reals^2$ är determinanten av Jacobimatrisen
+\begin{align}
+	J =
+	\begin{bmatrix}
+		\partialderivative{u}{x} & \partialderivative{u}{y}\\
+		\partialderivative{v}{x} & \partialderivative{v}{y}
+	\end{bmatrix}.
+\end{align}
+Visa att om $f = y + iv$ är holomorf så är Jacobianen $\abs{f'(z)}^2$.
+
+\paragraph{Lösning:}
+\begin{align*}
+	\abs{f'(z)}^2
+	\overset{(2.2)}&{=} \abs{u_x + i v_x}^2\\
+	%
+	&= u_x^2 + v_x^2\\
+	%
+	\overset{(2.3)}&{=} u_x v_y - v_x u_y\\
+	%
+	&= \abs{J}.
+\end{align*}
