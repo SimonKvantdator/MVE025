@@ -1,0 +1,128 @@
+%! TEX root = /home/simon/Documents/komplexanalysrövningsledning/lösningsförslag/main.tex
+
+\section{5.1}%
+\label{sec:5.1}
+Beräkna följande kurvintegraler när $\square$ är randen till en kvadrat med hörn i $\pm 4 \pm 4 i$ (positivt orienterad).
+
+\subsection{a)}
+\begin{align*}
+	\int_\square \frac{\Exp{z^2}}{z^3} \dd{z}.
+\end{align*}
+
+\paragraph{Lösning:}
+Vi börjar med att statea thm 5.1:
+\begin{theorem*}
+	Antag $f$ holo på ett område $G$ och $\gamma$ en positivt orienterad enkel sluten styckvis slät kurva som är nollhomotop på $G$.
+	Om $w \in \operatorname{int} \gamma$ så är
+	\begin{align}
+		f'(w) = \frac{1}{2 \pi i} \int \frac{f(z)}{(z - w)^2},%
+		\label{eq:f'(z)_from_integral}\\
+		%
+		f''(w) = \frac{1}{\pi i} \int \frac{f(z)}{(z - w)^3}.%
+		\label{eq:f''(z)_from_integral}
+	\end{align}
+\end{theorem*}
+
+Om vi identifierar $f(z) = \Exp{z^2}$ och $w = 0$ har vi att
+\begin{align*}
+	f''(z) = 2 \Exp{z^2} (2 z^2 + 1).
+\end{align*}
+Eftersom $0 \in \operatorname{int} \square$ får vi
+\begin{align*}
+	\int_\square \frac{\Exp{z^2}}{z^3} \dd{z} ={}& \pi i f''(0)\\
+	={}& 2 \pi i.
+\end{align*}
+
+\subsection{b)}
+\begin{align*}
+	\int_\square \frac{\Exp{3 z}}{(z - \pi i)^2} \dd{z}
+\end{align*}
+
+\paragraph{Lösning:}
+På samma sätt som i \textbf{a)}: eftersom $\pi i \in \operatorname{int} \square$,
+\begin{align*}
+	\int_\square \frac{\Exp{3 z}}{(z - \pi i)^2} \dd{z} ={}& 2 \pi i \derivative{\Exp{3 z}}{z} \eval_{z = \pi i}\\
+	={}& 6 \pi i \Exp{3 z} \eval_{z = \pi i}\\
+	={}& -6 \pi i.
+\end{align*}
+
+\subsection{c)}
+\begin{align*}
+	\int_\square \frac{\sin{2 z}}{(z - \pi)^2} \dd{z}.
+\end{align*}
+
+\paragraph{Lösning:}
+Eftersom $\pi \in \operatorname{int} \square$,
+\begin{align*}
+	\int_\square \frac{\sin{2 z}}{(z - \pi)^2} \dd{z} ={}& 2 \pi i \derivative{\sin{2 z}}{z} \eval_{z = \pi}\\
+	={}& 4 i \pi \cos{2 z} \eval_{z = \pi}\\
+	={}& 4 i \pi.
+\end{align*}
+
+\subsection{d)}
+\begin{align*}
+	\int_\square \frac{\Exp{z} \cos{z}}{(z - \pi)^3} \dd{z}.
+\end{align*}
+
+\paragraph{Lösning:}
+Eftersom $\pi \in \operatorname{int} \square$,
+\begin{align*}
+	\int_\square \frac{\Exp{z} \cos{z}}{(z - \pi)^3} \dd{z} ={}& \pi i \derivative[2]{\Exp{z} \cos{z}}{z} \eval_{z = \pi}\\
+	={}& -2 \pi i \Exp{z} \sin{z} \eval_{z = \pi}\\
+	={}& 0.
+\end{align*}
+
+
+
+\section{5.16}%
+\label{sec:5_16}
+Antag att $f$ är hel och att det finns konstanter $a$ och $b$ s.a.
+\begin{align}
+	\abs{f(z)} \leq a \abs{z} + b%
+	\label{eq:5_16}
+\end{align}
+för alla $z \in \complexes$.
+Visa att $f$ är ett polynom av grad högst 1.
+
+\paragraph{Lösning:}
+Idén är att använda \cref{eq:f''(z)_from_integral} tillsammans med prop.\ 4.6 d):
+\begin{proposition*}
+	antag att $\gamma$ är en styckvis slät kurva och $f$ är en komplexa funktion som är kontinuerlig på $\gamma$, då är
+	\begin{align}
+		\abs{\int_\gamma f} \leq \max_{z \in \gamma} \abs{f(z)} \cdot \abs{\gamma}.
+		\label{eq:curve_integral_is_bounded}
+	\end{align}
+\end{proposition*}
+
+Låt $\gamma = C[w, R]$ för något stort $R$ (så att $w$ ligger i $\operatorname{int} \gamma$).
+Vi har att 
+\begin{align*}
+	\abs{f''(w)} ={}& \abs{\frac{1}{\pi i}  \int_\gamma \frac{f(z)}{(z - w)^3}}\\
+	%
+	\overset{\cref{eq:curve_integral_is_bounded}}{\leq}{}& \frac{1}{\pi} \max_{z \in \complexes} \frac{\abs{f(z)}}{\abs{z - w}^3} \abs{\gamma}\\
+	%
+	\overset{\cref{eq:5_16}}{\leq}{}& \frac{1}{\pi} \max_{z \in \complexes} \frac{(a \abs{z} + b)}{R^3} 2 \pi R\\
+	%
+	\leq{}& \frac{1}{\pi} \frac{(a (R + \abs{w}) + b)}{R^3} 2 \pi R\\
+	%
+	\overset{R \to \infty}{\longrightarrow}{}& 0.
+\end{align*}
+Därför får vi att $f'' = 0$.
+Det är inte svårt att se att $f$ då måste vara ett polynom med grad högst 1 (detta visar man i en annan uppgift tror jag).
+
+
+
+\section{5.18}%
+\label{sec:5_18}
+Beräkna
+\begin{align*}
+	\int_{-\infty}^\infty \frac{\dd{x}}{x^4 + 1}.
+\end{align*}
+
+\paragraph{Lösning:}
+TODO.
+
+
+
+
+

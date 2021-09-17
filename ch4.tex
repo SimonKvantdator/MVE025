@@ -1,0 +1,75 @@
+\section{4.34}%
+\label{sec:4.34}
+
+Beräkna
+\begin{align*}
+	I(r) = \int_{C[-2i, r]} \frac{\dd{z}}{z^2 + 1}
+\end{align*}
+För alla $r \neq 1$, $3$.
+
+\paragraph{Lösning:}
+Vi börjar med att skriva ner två satser vi kommer använda oss av.
+\begin{theorem*}[Cauchys sats]
+	Om $f$ är holo i ett område $G$ och $\gamma$ och $\lambda$ är två styckvis släta kurvor i $G$ s.a.\ $\gamma \sim_G \lambda$, då är
+	\begin{align}
+		\int_\gamma f = \int_\lambda f.
+	\end{align}
+\end{theorem*}
+\begin{theorem*}[Cauchys integralformel]
+	Om $f$ är holo i ett område $G$ och $\gamma$ är en positivt orienterad, enkel, sluten, styckvis slät kurva s.a.\ $w \in \operatorname{int} \gamma$ och $\gamma \sim_G 0$, då är
+	\begin{align}\label{eq:cauchy_integral_formula}
+		f(w) = \frac{1}{2 \pi i} \int \frac{f(z)}{z - w} \dd{z}.
+	\end{align}
+\end{theorem*}
+
+Idén är att vi, för olika $r$, kommer kunna skriva om integranden $g(z) = \frac{1}{z^2 + 1}$ på formen \cref{eq:cauchy_integral_formula} på lite olika sätt.
+Vi har tre fall
+\begin{enumerate}
+	\item $\gamma_1 = C[-2i, r]$, $r < 1$,
+	\item $\gamma_2 = C[-2i, r]$, $1 < r < 3$,
+	\item $\gamma_3 = C[-2i, r]$, $r < 3$.
+\end{enumerate}
+\Cref{fig:some_gammas} visar ett par exempel på hur dessa tre olika fall kan se ut.
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.5\textwidth]{figures/some_gammas.png}
+	\caption{}
+	\label{fig:some_gammas}
+\end{figure}
+
+I fall 1 ser vi att $g$ inte har nåra singulariter i $\operatorname{int} \gamma_1$.
+Därför är $I = 0$ (detta är en uppenbar följdsats till Cauchys sats, men även tillCauchys integralformel genom att välja $(z + 2 i) g(z)$).
+
+I fall 2 ser vi att $g$ har en singularitet i $z = -i$.
+Vi kan faktorisera $g(z) = \frac{1}{(z + i) (z - i)}$, så definera $g_2$ enligt $g(z) = \frac{g_2(z)}{z + i}$.
+Idén är nu att $g_2(z) = \frac{1}{z - i}$ är holo på $\operatorname{int} \gamma_2$, så allt är upplagt för att använda Cauchys integralformel.
+Det är alltså bara att stoppa in $f = g_2$ och $w = -i$.
+Vi erhåller
+\begin{align*}
+	I ={}& \int_{\gamma_2} \frac{g_2(z)}{z + i} \dd{z}\\
+	={}& 2 \pi i g_2(-i)\\
+	={}& -\pi.
+\end{align*}
+
+I fall 3 är saker lite mer kompelicerade, $g$ har två singulariteter i $\operatorname{int} \gamma_3$.
+Vi hanterar detta genom att deformera $\gamma_3$ till $\gamma_3'$ enligt \cref{fig:gamma3'}.
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.5\textwidth]{figures/gamma3'.png}
+	\caption{Cauchys sats säger att vi har $\int_{\gamma_3} f = \int_{\gamma_3'} f$.}
+	\label{fig:gamma3'}
+\end{figure}
+
+$\gamma_3'$ består av två delar: en cirkel med centrum i $i$ och en cirkel med centrum i $-i$.
+I var och en av dessa två cirklar kan vi applicera Cauchys integralformel!
+Vi får att
+\begin{align*}
+	\int_{\gamma_3} f ={}& \int_{\gamma_3'} f\\
+	={}& \int_{C[i, \rho]} f + \int{C[-i, \rho]} f\\
+	&\{ g_3(z) \definedas 1/(z + i) \}\\
+	={}& \int_{C[i, \rho]} \frac{g_3(z)}{z - i} + \int_{C[-i, \rho]} \frac{g_2(z)}{z + i}\\
+	={}& \pi - \pi\\
+	={}& 0.
+\end{align*}
+
