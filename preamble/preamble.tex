@@ -94,6 +94,21 @@
     \newtheorem{definition}[theorem]{Definition}
     \newtheorem*{definition*}{Definition}
 }{}
+\iflanguage{swedish}{
+    \newtheorem{theorem}{Sats}
+    \newtheorem*{theorem*}{Sats}
+    \newtheorem{proposition}[theorem]{Proposition}
+    \newtheorem*{proposition*}{Proposition}
+    \newtheorem{corollary}{Följdsats}[theorem]
+    \newtheorem{corollary*}{Följdsats}
+    \newtheorem{lemma}[theorem]{Lemma}
+    \newtheorem*{lemma*}{Lemma}
+    \newtheorem{remark}[theorem]{Anmärkning}
+    \newtheorem*{remark*}{Anmärkning}
+    \theoremstyle{definition}
+    \newtheorem{definition}[theorem]{Definition}
+    \newtheorem*{definition*}{Definition}
+}{}
 
 % Write \overset{text}&{=} in align environments to align with respect to the = symbol
 \usepackage{aligned-overset} 

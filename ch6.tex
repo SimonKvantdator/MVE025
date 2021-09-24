@@ -1,0 +1,21 @@
+%! TEX root = /home/simon/Documents/komplexanalysrövningsledning/lösningsförslag/main.tex
+
+\section{6.11}%
+\label{sec:6_11}
+Visa att, om $U \from \reals^2 \to \reals$ är harmonisk och begränsad på $\complexes$, så är $U$ konstant.
+
+\paragraph{Lösning:}
+Vi statear vi statear två användbara satser:
+\begin{theorem*}[6.6]
+	Låt $u \from \reals^2 \to \reals$ vara harmonisk på ett enkelt sammanhängande område.
+	Då finns det en funktion $v \from \reals^2 \to \reals$ s.a.\ $f = u + i v$ är holomorf på $G$.
+\end{theorem*}
+\begin{theorem*}[Liouvilles sats]
+	Alla hela begränsade funktioner är konstanta.
+\end{theorem*}
+
+Definera $F$ enligt sats 6.6 s.a.\ $F = U + i V$ är hel ($\complexes$ är ett enkelt sammanhängande område).
+Betrakta nu den sammansatta funktionen $G = \operatorname{exp} \circ F$.
+$G$ är en sammansättning av två hela funktioner och är därför också hel.
+Men $G$ är också begränsad eftersom $F$:s realdel är begränsad.
+Enligt Liouvilles sats är då $G$ konstant och därför är även $F$ konstant.
