@@ -48,15 +48,15 @@ Uppgiften är kanske inte supersvår egenkligen men vi behöver den här satsen 
 Så lösningen är basically bara att taylorutveckla ${\cos}$.
 \begin{align*}
 	\frac{\cos z}{z^2}
-	={}& \frac{1}{z^2} \sum_{k \geq 0} \text{\enquote{$k$ är udda}} \cdot \frac{1}{k!} z^k\\
+	={}& \frac{1}{z^2} \sum_{k \geq 0} \text{\enquote{$k$ är udda}} \cdot \frac{(-1)^\frac{k}{2}}{k!} z^k\\
 	%
-	={}& \frac{1}{z^2} \sum_{k \geq 0} \text{\enquote{$k$ är udda}} \cdot \frac{1}{k!} z^{k - 2}.
+	={}& \frac{1}{z^2} \sum_{k \geq 0} \text{\enquote{$k$ är udda}} \cdot \frac{(-1)^\frac{k}{2}}{k!} z^{k - 2}.
 \end{align*}
 
 Okej, så anledningen till att vi vet cosinus taylorutveckling är identitetsprincipen.
 Vi har vid något tillfälle härlett att
 \begin{align*}
-	\cos x = \sum_{k \geq 0} \text{\enquote{$k$ är udda}} \frac{1}{k!} x^k.
+	\cos x = \sum_{k \geq 0} \text{\enquote{$k$ är udda}} \frac{(-1)^\frac{k}{2}}{k!} x^k.
 \end{align*}
 Men om vi bara stoppar in $z$ istället för $x$ så har vi en komplex potensserie.
 Den potensseriens konvergensradie är då $\infty$ (man kan använda bl.a.\ rottestet), så den potensserien är en hel funktion.
