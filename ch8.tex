@@ -1,0 +1,150 @@
+%! TEX root = /home/simon/Documents/komplexanalysrövningsledning/lösningsförslag/main.tex
+%  8.23, 8.25a, 8.32, 8.33
+
+\section{8.23}%
+\label{sec:8.23}
+Visa att
+\begin{align*}
+	\frac{z - 1}{z - 2} = \sum_{k \geq 0} \frac{1}{(z - 1)^k}
+\end{align*}
+för $\abs{z - 1} > 1$.
+
+\paragraph{Lösning:}
+Gör variabelbytet $w = 1 / (z - 1)$, $z = 1 / w + 1$.
+Då står det 
+\begin{align}\label{eq:geometric_series_in_w}
+	\frac{\frac{1}{w}}{\frac{1}{w} - 1} ={}& \sum_{k \geq 0} w^k\\
+	\frac{1}{1 - w} ={}& \sum_{k \geq 0} w^k \nonumber
+\end{align}
+som är den välkända geometriska serien.
+Det som är kvar att visa är att konvergensområdet innehåller $\set{z \suchthat \abs{z - 1} > 1}$.
+Men \cref{eq:geometric_series_in_w} konvergerar för $\set{w \suchthat w < 1} = \set{z \suchthat \abs{z - 1} > 1}$.
+
+
+\section{8.25a}%
+\label{sec:8_25a}
+Hitta Laurentserien för $\frac{\cos z}{z^2}$ centrerad i $z = 0$.
+
+\paragraph{Lösning:}
+Vi börjar med att skriva upp en sats.
+\begin{theorem*}[Identitetsprincipen]
+	Antag att $G$ är ett område och $f$, $g \from G \to \complexes$ är holo s.a.\ $f(a_n) = g(a_n)$ för en sekvens $(a_n)$ i $G$ som konvergerar i $G$, då är $f = g$.
+\end{theorem*}
+
+% \begin{theorem*}[8.24]
+% 	Antag $f$ holo i en annulus $A = \set{z \in \complexes \suchthat R_1 < \abs{z - z_0} < R_1}$,  då har $f$ en Laurentutveckling
+% 	\begin{align*}
+% 		f(z) = \sum_{k \in \integers} c_k (z - z_0)^k\\
+% 	\end{align*}
+% 	där
+% 	\begin{align*}
+% 		c_k = \frac{1}{2 \pi i} \int_{C[z_0, r] \frac{f(w)}{(w - z_0)^{k + 1}} \dd{w}
+% 	\end{align*}
+% 	för något $r \in (R_1, R_2)$.
+% \end{theorem*}
+
+Uppgiften är kanske inte supersvår egenkligen men vi behöver den här satsen för att resonera lite om dom dom mer tekniska aspekterna.
+
+Så lösningen är basically bara att taylorutveckla ${\cos}$.
+\begin{align*}
+	\frac{\cos z}{z^2}
+	={}& \frac{1}{z^2} \sum_{k \geq 0} \text{\enquote{$k$ är udda}} \cdot \frac{1}{k!} z^k\\
+	%
+	={}& \frac{1}{z^2} \sum_{k \geq 0} \text{\enquote{$k$ är udda}} \cdot \frac{1}{k!} z^{k - 2}.
+\end{align*}
+
+Okej, så anledningen till att vi vet cosinus taylorutveckling är identitetsprincipen.
+Vi har vid något tillfälle härlett att
+\begin{align*}
+	\cos x = \sum_{k \geq 0} \text{\enquote{$k$ är udda}} \frac{1}{k!} x^k.
+\end{align*}
+Men om vi bara stoppar in $z$ istället för $x$ så har vi en komplex potensserie.
+Den potensseriens konvergensradie är då $\infty$ (man kan använda bl.a.\ rottestet), så den potensserien är en hel funktion.
+Men en hel funktion som stämmer överrens med $\cos z$ på $\reals$ måste vara $\cos z$ enligt identitetsprincipen.
+
+% Den andra saken vi måste diskutera är om vi får multiplicera in $\frac{1}{z^2}$ innanför summan.
+% Men enligt sats 8.24 har $(\cos z) / z^2$ en Laurentsutveckling i $A = \complexes \setminus \set{0}$.
+% Alltså är 
+
+
+\section{8.32}%
+\label{sec:8_32}
+
+Hitta Laurentserien till
+\begin{align*}
+	f(z) = \frac{3}{(1 - z) (z + 2)} 
+\end{align*}
+centrerad i $0$, definerad på $\abs{z} < 1$, $1 < \abs{z} < 2$, respetkive $2 < \abs{z}$.
+
+\paragraph{Lösning:}
+\begin{align*}
+	f(z) ={}& \frac{3}{(1 - z) (z + 2)}\\
+	={}& -\frac{1}{z - 1} + \frac{1}{z + 2}.
+\end{align*}
+Den första termen har två möjliga utvecklingar:
+\begin{align*}
+	\frac{1}{z - 1} ={}& -\sum_{k \geq 0} z^k
+\end{align*}
+som konvergerar för $\abs{z} < 1$, och
+\begin{align*}
+	\frac{1}{z - 1} ={}& \frac{1}{z} \frac{1}{1 - \frac{1}{z}}\\
+	%
+	={}& \frac{1}{z} \sum_{k \geq 0} \left(\frac{1}{z} \right)^k
+\end{align*}
+som konvergerar för $1 < \abs{z}$.
+På samma sätt har den andra termen också två möjliga utvecklingar:
+\begin{align*}
+	\frac{1}{z + 2} ={}& \frac{1}{2} \sum_{k \geq 0} (-\frac{z}{2})^k
+\end{align*}
+som konvergerar för $\abs{z} < 2$, och
+\begin{align*}
+	\frac{1}{z + 2} ={}& \frac{2}{z} \frac{1}{2} \sum_{k \geq 0} \left( -\frac{2}{z} \right)^k
+\end{align*}
+som konvergerar för $2 < \abs{z}$.
+Om vi vill att vår potensserie ska konvergera på $\set{\abs{z} < 1}$ måste vi då välja första utvecklingen för båda termerna.
+Vi får
+\begin{align*}
+	f(z) = \sum_{k \geq 0} \left[ z^k + \frac{1}{2} \left(-\frac{z}{2}\right)^k \right].
+\end{align*}
+Om vi vill att potensserien ska konvergera på $\set{1 < \abs{z} < 2}$ måste vi välja
+\begin{align*}
+	f(z) = \sum_{k \geq 0} \left[ \frac{1}{z} \left(\frac{1}{z}\right)^k + \frac{1}{2} \left(-\frac{z}{2}\right)^k \right].
+\end{align*}
+Slutligen, om vi vill att potensserien konvergerar på $\set{2 < \abs{z}}$ måste vi välja
+\begin{align*}
+	f(z) = \sum_{k \geq 0} \left[ \frac{1}{z} \left(\frac{1}{z}\right)^k + \frac{2}{z} \frac{1}{2} \left( -\frac{2}{z} \right)^k \right].
+\end{align*}
+
+
+\section{8.33}%
+\label{sec:8_33}
+
+Antag att $f(z)$ har exakt ett nollställe, kalla det $a$, på $\operatorname{int} \gamma$ och att det är av ordning 1.
+Visa att
+\begin{align}\label{eq:what_we_want_to_show_in_8_33}
+	a = \frac{1}{2 \pi i} \int_\gamma \frac{z f'(z)}{f(z)} \dd{z}.
+\end{align}
+
+\paragraph{Lösning:}
+Enligt klassifikation av nollställen har vi att (TODO: skriv upp sats?) $f(z) = (z - a) g(z)$ med $g$ holo och nollskiljd på $\operatorname{int} \gamma$.
+VL i \cref{eq:what_we_want_to_show_in_8_33} blir då
+\begin{align*}
+	\frac{1}{2 \pi i} \int_\gamma \frac{z [g(z) + (z - a) g'(z)]}{(z - a) g(z)} \dd{z}
+	= \frac{1}{2 \pi i} \left[ \int_\gamma \frac{z}{(z - a)} + \frac{g'(z)}{g(z)} \right] \dd{z}
+\end{align*}
+Eftersom $g$ är nollskiljd på $\operatorname{int} \gamma$ är $g' / g$ holo där och den andra termen blir 0.
+Cauchys integralformel på den första termen ger oss då \cref{eq:what_we_want_to_show_in_8_33}.
+
+
+\section{8.34}%
+\label{sec:8_34}
+
+Visa att om $f$ är jämn så har dess Laurentserie bara jämna potenser.
+
+\paragraph{Lösning:}
+TODO: ta $f$ minus sina jämna termer och så får du kvar en jämn funktion.
+Motivera detta med absolutkonvergens.
+
+
+
+
