@@ -1,0 +1,265 @@
+%! TEX root = /home/simon/Documents/komplexanalysrövningsledning/lösningsförslag/main.tex
+% Kap 9: 1, 2, 5abcd, 6, 7de, 8cd, 9, 11, 14, 15, 17,18, 21abc.
+
+
+\section{9.1}%
+\label{sec:9_1}
+Antag att $f$ har ett nollställe av ordning $m$ i $a$.
+Förklara varför $\frac{1}{f}$ har en pol av ordning $m$ i a.
+
+\paragraph{Lösning:}
+Vi börjar med att skriva ner två satser
+\begin{theorem*}[klassifikation av nollställen]
+	\begin{enumerate}
+		Antag att $G \subset \complexes$ är ett område.
+		Antag $f \from G \to \complexes$ holo och har ett nollställe i $a \in G$.
+		Då gäller antingen
+		\item $f = 0$.
+		\item $\exists m \in \integers_{\geq 1}$ och en holomorf funktion $g \from G \to \complexes$ s.a.\ $g(a) \neq 0$ och 
+		\begin{align*}
+			f(z) = (z - a)^m g(z).
+		\end{align*}
+	\end{enumerate}
+\end{theorem*}
+
+\begin{theorem*}[Följdsats 9.6]
+	Antag $f$ holo i en punkterad disk $D^\times[a, R]$.
+	Då har $f$ en pol i $a$ omm $\exists m \in \integers_{\geq 1}$ och holo $g \from D^\times[a, R]$ s.a.\ $g(a) \neq 0$ och
+	\begin{align*}
+		f(z) = (z - a)^{-m} g(z).
+	\end{align*}
+\end{theorem*}
+
+Vi har alltså att $f(z) = (z - a)^m g(z)$ för något $m$ och något holo $g$ s.a.\ $g(z) \neq 0$.
+Men då är $\frac{1}{g}$ holo i ett område kring $a$ och alltså har $\frac{1}{(z - a)^m g(z)}$ en pol av ordning $m$ enligt följdsats 9.6.
+
+
+\section{9.2}%
+\label{sec:9_2}
+Hitta poler/hävbar singulariteter hos följande funktioner och bestäm deras ordning.
+
+\subsection{a)}
+\begin{align*}
+	f(z) = (z^2 + 1)^{-3} (z - 1)^{-4}.
+\end{align*}
+
+\paragraph{Lösning:}
+Det är enkelt att göra detta om vi lyckas faktorisera $f$.
+Vi har att
+\begin{align*}
+	f = (z + i)^{-3} (z - i)^{-3} (z - 1)^{-4}.
+\end{align*}
+Så $f$ har
+\begin{itemize}
+	\item en pol av ordning $3$ i $-i$,
+	\item en pol av ordning $3$ i $i$,
+	\item en pol av ordning $4$ i $1$.
+\end{itemize}
+
+\subsection{b)}
+\begin{align*}
+	f(z) = z \cot{z}.
+\end{align*}
+
+\paragraph{Lösning:}
+\begin{remark}\label{remark:ang_produkter_av_mero_och_holo_funktioner}
+	Okej, så om jag har en holo funktion $g$ med en pol i $a$ och en holo funktion $h$ s.a.\ $h(a) \neq 0$ så har $g$ och $g h$ en pol av samma ordning i $a$.
+	Detta är uppenbart från följdsats 9.6.
+\end{remark}
+
+$\cot{z}$ har en pol av ordning $1$ i $0$ och den är $\pi$-periodisk, så den har poler av ordning $1$ i alla punkter på formen $n \pi$, $n \in \integers$.
+Eftersom $z$ är nollskiljd överallt förutom i $0$ har vi att $f$ har poler av ordning $1$ i alla punkter på formen $n \pi$ förutom $0$, där har hon en hävbar singularitet.
+
+\subsection{c)}
+\begin{align*}
+	f(z) = z^{-5} \sin{z}.
+\end{align*}
+
+\paragraph{Lösning:}
+Taylorutveckling av $\sin$ ger oss att $f$ har en pol av ordning $4$ i $0$.
+
+\subsection{d)}
+\begin{align*}
+	f(z) = \frac{1}{1 - \exp{z}}.
+\end{align*}
+
+\paragraph{Lösning:}
+$f$ har en pol i $0$ av ordning $1$ och eftersom $\mathrm{exp}$ är $2 \pi i$-periodisk har vi att $f$ har poler av ordning $1$ i all punkter på formen $n 2 \pi i$, $n \in \integers$.
+
+\subsection{e)}
+\begin{align*}
+	f(z) = \frac{z}{1 - \exp{z}} 
+\end{align*}
+
+\paragraph{Lösning:}
+
+Vi kombinerar \textbf{d)} med \cref{remark:ang_produkter_av_mero_och_holo_funktioner} och får att $f$ har poler i all punkter på formen $n 2 \pi i$ förutom i $0$.
+Där är singulariteten hävbar.
+
+\section{9.5}%
+\label{sec:9_5}
+Evaluera följande integraler när $\gamma = C[0, 3]$.\\
+\todo[inline]{Gör 9.6 först.}
+
+\subsection{a)}
+\begin{align*}
+	\int_\gamma \cot{z} \dd{z}.
+\end{align*}
+
+\paragraph{Lösning:}
+Vi börjar med att statea residysatsen
+\begin{definition*}
+	Antag $a$ isolerad singularitet till en holo funktion $f$ med Laurentutveckling $\sum_{k \in \integers} c_k (z - a)^k$.
+	Då är $c_{-1}$ $f$:s \emph{residy} i $a$.
+	Vi skriver $\residue_{z = a} [f(z)]$.
+\end{definition*}
+\begin{theorem*}[Residysatsen]
+	Antag $f$ mero i ett område $G$ och antag $\gamma$ positivt orienterad, enkel, sluten, styckvis slät kurva, nollhomotop i $G$ som undviker $f$:s singulariteter.
+	Då är
+	\begin{align}
+		\int_\gamma f \dd{z} = 2 \pi i \sum_a \residue_{z = a}[f(z)]
+	\end{align}
+	där summan tas över $f$:s singulariteter i $\operatorname{int} \gamma$ (garanterat ändligt många).
+\end{theorem*}
+
+$\cot{z}$ har en pol i $\operatorname{int} \gamma$
+Där är residyn $1$.
+Tänk $\cot{z} = 1 / \tan{z} = (1 / z) (z / \tan{z})$ där $z / \tan{z}$ är holo kring $z = 0$.
+Därför blir integralen $2 \pi i$.
+
+\subsection{b)}
+\begin{align*}
+	\int_\gamma z^3 \cos{\frac{3}{z}} \dd{z}.
+\end{align*}
+
+\paragraph{Lösning:}
+Integranded har en väsentlig singularitet i $0$, så dess Laurentutveckling kommer ha oändligt många termer med negativ potens.
+Men det är fine, vi behöver bara veta koefficienten för $\frac{1}{z}$ i dess Laurentutveckling.
+Vi Taylorutvecklar ${\cos}$:
+\begin{align*}
+	z^3 \cos{\frac{3}{z}} = \sum_{k \geq 0} \frac{(-3)^{2 k}}{(2 k)!} z^{-2 k + 3}.
+\end{align*}
+Residyn i $0$ blir $\frac{81}{24}$ (svarar mot $k = 2$).
+Därför blir integralen $\frac{27}{8} \pi i$.
+
+\subsection{c)}
+\begin{align*}
+	\int_\gamma \frac{\dd{z}}{(z + 4) (z^2 + 1)}
+\end{align*}
+
+\paragraph{Lösning:}
+Vi har två singulariteter som ligger i $\operatorname{int} \gamma$, $\pm i$.
+Integranden går att skriva om som
+\begin{align}
+	h(z) = \frac{1}{(z + 4) (z + i) (z - i)}.
+\end{align}
+Kring $-i$ kan vi bryta ut $\frac{1}{z + i}$ och se att $h(z) \approx \frac{1}{(-i + 4) (-i - i} \frac{1}{z - i}$.
+Så residyn i den punkten är $\frac{1}{(-i + 4) (-2i)}$ (enligt 9.6).
+På samma sätt har vi att residyn i $i$ är $\frac{1}{(i + 4) (2i)}$.
+Vi adderar dessa enligt residysatsen och erhåller att integralen blir $-\frac{2 \pi i}{17}$.
+
+\subsection{d)}
+\begin{align}
+	\int_\gamma z^2 \Exp{\frac{1}{z}} \dd{z}.
+\end{align}
+\paragraph{Lösning:}
+Vi Taylorutvecklar $\mathrm{exp}$ och får att
+\begin{align*}
+	\int_\gamma \sum_{k \geq 0} \frac{1}{k!} z^{-k + 2} \dd{z} ={}& 2 \pi i \residue_{z = 0} \left[\sum_{k \geq 0} \frac{1}{k!} z^{-k + 2}\right]\\
+	={}& 2 \pi i \frac{1}{3!}\\
+	={}& \frac{\pi i}{3}.
+\end{align*}
+
+
+\section{9.6}%
+\label{sec:9_6}
+Antag att en holo funktion $f$ har en pol av ordning $1$ i $a$ och att $g$ är holo i $a$.
+Visa att
+\begin{align}
+	\residue_{z = a} [f(z) g(z)] = g(a) \residue_{z = a} [f(z)].
+\end{align}
+
+\paragraph{Lösning:}
+Om $g$ är holo i $a$ kan vi Taylorutveckla henne där.
+Vi kan också Laurentutveckla $f$ kring $a$.
+Vi får då att
+\begin{align}
+	f(z) g(z) = \left( \sum_{k \geq -1} c_k (z - a)^k \right) \left( \sum_{k \geq 0} d_k (z - a)^k \right).
+\end{align}
+Från detta kan vi se att koefficienten för $\frac{1}{z}$ i $f g$:s Laurentutveckling är $c_{-1} d_0 = c_{-1} g(a)$.
+
+
+\section{9.7}%
+\label{sec:9_7}
+Bestäm residyn i $0$ för följande funktioner.
+
+\subsection{d)}
+\begin{align*}
+	\Exp{1 - \frac{1}{z}}.
+\end{align*}
+
+\paragraph{Lösning:}
+Vi Taylorutvecklar $\mathrm{exp}$:
+\begin{align*}
+	\Exp{1 - \frac{1}{z}} = \sum_{k \geq 0} \frac{1}{k!} (1 - \frac{1}{z})^k.
+\end{align*}
+Härifrån kan vi se att $c_{-1} = \sum_{k \geq 1} \frac{-1}{k!} = -\exp{1} - 1$.
+\todo[inline]{Facit sa $-\exp{}$ men det låter fel??}
+
+\subsection{e)}
+\begin{align*}
+	\frac{\Exp{4 z} - 1}{\sin^2{z}}.
+\end{align*}
+
+\paragraph{Lösning:}
+Jag vet inte om detta är det tydligaste sättet att göra det på, men vi skriver om uttrycket enligt
+\begin{align*}
+	\frac{\Exp{4 z} - 1}{\sin^2{z}} = \frac{\Exp{4 z} - 1}{z^2} \frac{z^2}{\sin^2{z}}.
+\end{align*}
+$\frac{z^2}{\sin^2{z}}$ är holo kring $0$.
+Detta inses kanske lättast genom att använda standardgränsvärdet $\lim_{x \to 0} \frac{\sin{x}}{x} = 1$.
+$\frac{\Exp{4 z} - 1}{z^2} = \frac{1}{z^2} \sum_{k \geq 1} \frac{1}{k!} (4 z)^k$ har en pol av ordning $1$ i $0$ med residyn $4$.
+
+
+\section{9.8}%
+\label{sec:9_8}
+Använd residyer för att beräkna följande integraler.
+
+\subsection{c)}
+\begin{align*}
+	\int_{D[0, 2]} \frac{\exp{z}}{z^3 + z} \dd{z}.
+\end{align*}
+
+\paragraph{Lösning:}
+$z^3 + z = z (z - i) (z + i)$, så integranden har tre poler i $D[0, 2]$.
+Vi erhåller
+\begin{align*}
+	\int_{D[0, 2]} \frac{\exp{z}}{z^3 + z} \dd{z}
+	={}& 2 \pi i \sum_a \residue_{z = a} \left[ \frac{\exp{z}}{z (z - i) (z + i)} \right]\\
+	%
+	={}& 2 \pi i \left(
+		\residue_{z = 0} \left[ \frac{\exp{z}}{z (z - i) (z + i)} \right]
+		+ \residue_{z = i} \left[ \frac{\exp{z}}{z (z - i) (z + i)} \right]
+		+ \residue_{z = -i} \left[ \frac{\exp{z}}{z (z - i) (z + i)} \right]
+	\right)\\
+	%
+	={}& 2 \pi i \left(
+		\frac{\exp{z}}{(z - i) (z + i)} \eval_{z = 0}
+		+ \frac{\exp{z}}{z (z + i)} \eval_{z = i}
+		+ \frac{\exp{z}}{z (z - i)}  \eval_{z = -i}
+	\right)\\
+	%
+	={}& 2 \pi i \left(
+		\frac{1}{-i^2} 
+		+ \frac{\exp{i}}{2 i^2}
+		+ \frac{\exp{-i}}{2 i^2}
+	\right)\\
+	%
+	& \todo[inline]{TODO}
+\end{align*}
+
+\subsection{d)}
+\paragraph{Lösning:}
+
+
+
