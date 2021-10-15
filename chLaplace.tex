@@ -1,0 +1,206 @@
+%! TEX root = /home/simon/Documents/komplexanalysrövningsledning/lösningsförslag/main.tex
+
+\section{Laplace.1}%
+\label{sec:laplace_1}
+Beräkna Laplacetransformen av följande funktioner:
+
+\subsection{a)}
+\begin{align*}
+	f(t) = \sinh{A t}.
+\end{align*}
+
+\paragraph{Lösning:}
+\begin{align*}
+	\laplacetransform{f}(s) ={}& \int_0^\infty f(t) \exp{-s t} \dd{t}\\
+	={}& \int_0^\infty \sinh{A t} \exp{-s t} \dd{t}\\
+	={}& \int_0^\infty \left( \frac{1}{2} \exp{A t} - \frac{1}{2} \exp{-A t} \right) \exp{-s t} \dd{t}\\
+	={}& \int_0^\infty \left( \frac{1}{2} \exp{[A - s] t} - \frac{1}{2} \exp{[-A - s] t} \right) \exp{-s t} \dd{t}\\
+	={}& \left[ \frac{1}{2(A - s)} \exp{[A - s] t} - \frac{1}{2(-A - s)} \exp{[-A - s] t} \right]_0^\infty\\
+	={}& -\frac{1}{2(A - s)} + \frac{1}{2(-A - s)}\\
+	={}& \frac{A}{(s - A) (s + A)}.
+\end{align*}
+Kom ihåg att det dyker upp minustecken när vi partialintegrerar och när vi evaluerar i den vänstra gränsen.
+
+\subsection{c)}
+\begin{align}
+	f(t) = t^2 \exp{a t}.
+\end{align}
+
+\paragraph{Lösning:}
+\begin{align}
+	\laplacetransform{f}(s) ={}& \int_0^\infty f(t) \exp{-s t} \dd{t}\\
+	={}& \int_{0}^{\infty} t^2 \exp{[a - s] t} \dd{t}\\
+	={}& \int_{0}^{\infty} -\frac{2 t}{a - s} \exp{[a - s] t} \dd{t}\\
+	={}& \int_{0}^{\infty} \frac{2}{(a - s)^2} \exp{[a - s] t} \dd{t}\\
+	={}& \left[ \frac{2}{(a - s)^3} \exp{[a - s] t} \right]_0^\infty\\
+	={}& -\frac{2}{(a - s)^3}.
+\end{align}
+
+
+\section{Laplace.3}%
+\label{sec:laplace_3}
+Lös följande begynnelsevärdesproblem:
+
+\subsection{b)}
+\begin{align}\label{eq:differential_equation_that_i_want_to_laplace_transform}
+	u'' + u = \theta(t - \pi)
+\end{align}
+där $u(0) = u'(0) = 0$ och där $\theta$ är Heavisides stegfunktion.
+
+\paragraph{Lösning:}
+Vi kommer bland anna använda följande
+\begin{itemize}
+	\item $\laplacetransform{u'}(s) = s \laplacetransform{u}(s) - u(0)$,
+	\item $\laplacetransform{u''}(s) = s^2 \laplacetransform{u}(s) - s u'(0) - u(0)$,
+	\item $g(t) = f(t - t_0) \implies \laplacetransform{g}(s) = \exp{-t_0 s} \laplacetransform{f}(s)$.
+\end{itemize}
+Eftersom Laplacetransformen antar att alla funktioner är $0$ för $t < 0$ har vi att $\laplacetransform{\theta}(s) = \laplacetransform{1}(s) = \frac{1}{s}$.
+Laplacetransformen av \cref{eq:differential_equation_that_i_want_to_laplace_transform} är då
+\begin{align}
+	s^2 \laplacetransform{u} + \laplacetransform{u} = \frac{\exp{-\pi s}}{s}.
+\end{align}
+Här har vi an
+Av vilket följer att
+\begin{align*}
+	\laplacetransform{u}(s) = \frac{\exp{-\pi s}}{s (s^2 + 1)} = \exp{-\pi s} \left(\frac{1}{s} - \frac{s}{s^2 + 1}\right).
+\end{align*}
+Om vi identifierar $\Laplacetransform{\cos}(s) = \frac{s}{1 + s^2}$ kan vi göra en invers Laplacetransform och komma fram till att
+\begin{align*}
+	u(t) = \theta(t - \pi) \left(1 - \cos{t} \right).
+\end{align*}
+Det står att svaret ska bli $\theta(t - \pi) (1 + \cos{t})$ men jag vet inte riktigt var jag skulle få plustecknet från?..
+
+
+\section{Laplace.4}%
+\label{sec:laplace_4}
+Hitta funktioner med följande Laplacetransformer.
+
+\subsection{a)}
+\begin{align}
+	\laplacetransform{f}(s) = \frac{s}{(s^2 + 1)^2}.
+\end{align}
+
+\paragraph{Lösning:}
+Enligt sats 3.2 är laplacetransformen bijektiv, så vi vet att det måste gå att hitta en funktion med denna Laplacetransform.
+Även om sats 3.2 ger oss ett uttryck på sluten form är det lite bökigt att räkna med, så vi satsar på att gå baklänges.
+Typ som att vi integrerar.
+Med vetskapen om att det alltså är möjligt att hitta $f$ gör vi vår första observation:
+\begin{align*}
+	\derivative{}{s} \left( -\frac{1}{2 (s^2 + 1)} \right) = \frac{s}{(s^2 + 1)^2}.
+\end{align*}
+Det som står innanför derivatan är bilden av en Laplacetransform:
+\begin{align*}
+	\Laplacetransform{\sin}(s) = \frac{1}{1 + s^2}.
+\end{align*}
+Med hjälp av proposition 3.3 \textbf{f)},
+\begin{align*}
+	\Laplacetransform{t f(t)}(s) = -\derivative{}{s} \laplacetransform{f}(s),
+\end{align*}
+har vi då att
+\begin{align*}
+	\laplacetransform{f}(s) ={}& \frac{1}{2} \Laplacetransform{t \sin{t}}\\
+	f(t) ={}& \frac{1}{2} t \sin{t}.
+\end{align*}
+
+
+\subsection{b)}
+\begin{align*}
+	\laplacetransform{f}(s) = \frac{1}{(s - a)^4}.
+\end{align*}
+
+\paragraph{Lösning:}
+Proposition 3.3 \textbf{f)} kan enkelt generaliseras som
+\begin{align*}
+	\Laplacetransform{t^n f(f)}(s) = (-1)^n \derivative[n]{}{s} \laplacetransform{f}(s).
+\end{align*}
+Detta kan vi sedan applicera på
+\begin{align*}
+	\frac{1}{(s - a)^4} ={}& \frac{(-1)^3}{3 \cdot 2} \derivative[3]{}{s} \frac{1}{s - a}\\
+	={}& \frac{(-1)^3}{6} \derivative[3]{}{s} \Laplacetransform{\exp{a t}}(s)\\
+	={}& \frac{1}{6} \Laplacetransform{t^3 \exp{a t}}(s).
+\end{align*}
+Alltså
+\begin{align*}
+	f(t) = \frac{1}{6} t^3 \exp{a t}.
+\end{align*}
+
+
+\section{Z.1}%
+\label{sec:z_1}
+Beräkna $Z$-transformen av följande taljöljder:
+
+\subsection{a)}
+\begin{align*}
+	a_k = \frac{2^k}{k!}.
+\end{align*}
+
+\paragraph{Lösning:}
+Vi vet ju att
+\begin{align*}
+	\exp{z} = \sum_{k \geq 0} \frac{1}{k!} z^k,
+\end{align*}
+så
+\begin{align*}
+	\exp{2 / z} ={}& \sum_{k \geq 0} \frac{2^k}{k!} \left(\frac{1}{z}\right)^k\\
+	={}& Z((a_k)).
+\end{align*}
+
+\subsection{c)}
+\begin{align*}
+	a_k = k(k - 1).
+\end{align*}
+
+\paragraph{Lösning:}
+Vi vet ju att
+\begin{align*}
+	\frac{1}{1 - z} = \sum_{k \geq 0} z^k.
+\end{align*}
+Deriverar vi detta två gånger får vi
+\begin{align*}
+	\frac{2}{(1 - z)^3} ={}& \sum_{k \geq 0} k (k - 1) z^{k - 2}\\
+	={}& \frac{1}{z^2}  \sum_{k \geq 0} k (k - 1) z^k.
+\end{align*}
+Vi får att
+\begin{align*}
+	\frac{2}{(1 - 1/z)^3} ={}& z^2 \sum_{k \geq 0} k (k - 1) \left(\frac{1}{z}\right)^k\\
+	={}& z^2 Z((a_k)).
+\end{align*}
+Alltså är 
+\begin{align*}
+	Z((a_k)) ={}& \frac{2 / z^2}{(1 - 1/z)^3}\\
+	={}& \frac{2 z}{(z - 1)^3}.
+\end{align*}
+
+
+\section{Z.3}%
+\label{sec:z_3}
+
+Använd $Z$-transformen för att lösa
+\begin{align}\label{eq:sequence_to_be_Z-transformed}
+	a_{k + 1} - a_k = k, \quad a_0 = 0.
+\end{align}
+
+\paragraph{Lösning}
+Definera \enquote{$S((a_k)) = (a_{k + 1})$}.
+Vi har då att
+\begin{align*}
+	Z\left( S \left((a_k)\right) \right) = z \left(Z((a_k)) - a_0 \right).
+\end{align*}
+Om vi applicerar detta på \cref{eq:sequence_to_be_Z-transformed} får vi
+\begin{align*}
+	z \left(Z((a_k)) - a_0\right) - Z((a_k)) = \frac{z}{(z - 1)^2}.
+\end{align*}
+Efter lite ommöblering:
+\begin{align*}
+	Z((a_k)) ={}& \frac{1}{z - 1} \left[\frac{z}{(z - 1)^2} - z a_0\right]\\
+	={}& \frac{z}{(z - 1)^3}\\
+	={}& \frac{z^{-2}}{(1 - \frac{1}{z})^3}\\
+	={}& z^{-2} \derivative[2]{}{(\frac{1}{z})} \left[ \frac{1}{2 (1 - \frac{1}{z})} \right]\\
+	={}& z^{-2} \sum_{k \geq 0} \frac{k (k - 1)}{2} \left( \frac{1}{z} \right)^{k - 2}\\
+	={}& \sum_{k \geq 0} \frac{k (k - 1)}{2} \left( \frac{1}{z} \right)^k.
+\end{align*}
+Alltså är $a_k = \frac{k (k - 1)}{2}$
+
+\todo[inline]{Ta upp avsnitt 4.1.1 i Nukelawe's Markov chain analysis of overkill and natural regeneration in OSRS Combat som ett bra exempel på vad detta kan användas till.
+Nukelawe får en differensekvation för väntevärdet av fightens längd $L$ som han löser m.h.a.\ ansätta talföljden som koefficienter till en holomorf funktion.}
+
